@@ -26,7 +26,7 @@
   "actions": {
     "deploy": {
       "cmd[${targetNodes.nodeGroup}]": [
-        "curl -L -O https://github.com/lazarenkod/jelastic-composer-addon/raw/master/scripts/install.sh",
+        "curl -L -O https://raw.githubusercontent.com/lazarenkod/composer-addon/master/scripts/install.sh",
         "sh ./install.sh && rm -f ./install.sh"
       ]
     },
