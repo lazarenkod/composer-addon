@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "type": "update",
+  "build": "20180128",
+  "id": "php-composer",
+  "targetNodes": {
+    "nodeType": [
+      "nginxphp",
+      "nginxphp-dockerized",
+      "apache",
+      "apache2"
+    ]
+  },
+  "name": "Composer",
+  "homepage": "https://getcomposer.org",
+  "categories": [
+    "apps/dev-and-admin-tools"
+  ],
+  "logo": "https://getcomposer.org/img/logo-composer-transparent4.png",
+  "description": {
+    "text": "Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.",
+    "short": "Composer is a dependency Manager for PHP"
+  },
+  "onInstall": "deploy",
+  "onUninstall": "undeploy",
+  "actions": {
+    "deploy": {
+      "cmd[${targetNodes.nodeGroup}]": [
+        "curl -L -O https://github.com/lazarenkod/jelastic-composer-addon/raw/master/scripts/install.sh",
+        "sh ./install.sh && rm -f ./install.sh"
+      ]
+    },
+    "undeploy": {
+      "cmd[${targetNodes.nodeGroup}]": [
+        "rm -rf $HOME/composer/bin && rm -rf $HOME/.composer"
+      ]
+    },
+    "update": {
+      "cmd[${targetNodes.nodeGroup}]": [
+        "composer self-update"
+      ]
+    }
+  },
+  "menu": [
+    {
+      "confirmText": "Do you want to update Composer?",
+      "loadingText": "Updating...",
+      "action": "update",
+      "caption": "Update Composer",
+      "successText": "Composer has been successfully updated!"
+    }
+  ],
+  "success": "Composer add-on has been applied to the <b>${env.envName}</b> environment."
+}
