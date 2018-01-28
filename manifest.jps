@@ -16,7 +16,7 @@
   "categories": [
     "apps/dev-and-admin-tools"
   ],
-  "logo": "https://getcomposer.org/img/logo-composer-transparent4.png",
+  "logo": "https://raw.githubusercontent.com/lazarenkod/composer-addon/master/images/logo-composer.png",
   "description": {
     "text": "Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.",
     "short": "Composer is a dependency Manager for PHP"
