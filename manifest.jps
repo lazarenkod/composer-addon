@@ -25,18 +25,18 @@
   "onUninstall": "undeploy",
   "actions": {
     "deploy": {
-      "cmd[cp]": [
+      "cmd[${targetNodes.nodeGroup}]": [
         "curl -L -O https://raw.githubusercontent.com/lazarenkod/composer-addon/master/scripts/install.sh",
         "sh ./install.sh && rm -f ./install.sh"
       ]
     },
     "undeploy": {
-      "cmd[cp]": [
+      "cmd[${targetNodes.nodeGroup}]": [
         "rm -rf $HOME/composer/bin && rm -rf $HOME/.composer"
       ]
     },
     "update": {
-      "cmd[cp]": [
+      "cmd[${targetNodes.nodeGroup}]": [
         "composer self-update"
       ]
     }
@@ -50,5 +50,5 @@
       "successText": "Composer has been successfully updated!"
     }
   ],
-  "success": "Composer add-on has been applied to the <b>${env.envName}</b> environment. <br/> Now just run <b>composer</b> in order to run Composer"
+  "success": "Composer add-on has been applied to the <b>${env.envName}</b> environment."
 }
